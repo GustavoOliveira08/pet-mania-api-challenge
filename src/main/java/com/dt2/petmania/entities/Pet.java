@@ -1,21 +1,34 @@
 package com.dt2.petmania.entities;
 
 
-@Table("tb_pet")
+import com.dt2.petmania.entities.enums.Porte;
+import com.dt2.petmania.entities.enums.Sexo;
+import jakarta.persistence.*;
+
+@Entity
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String especie;
     private String raca;
     private int idade;
+
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
+    @Enumerated(EnumType.STRING)
     private Porte porte;
+
     private String personalidade;
     private String foto;
     private boolean disponivel;
 
-    public Pet(String nome, String especie, String raca, int idade, Sexo sexo, Porte porte, String personalidade, String foto, ballena disponivel) {
+    public Pet() {
+    }
+
+    public Pet(Long id, String nome, String especie, String raca, int idade, Sexo sexo, Porte porte, String personalidade, String foto, boolean disponivel) {
+        this.id = id;
         this.nome = nome;
         this.especie = especie;
         this.raca = raca;
@@ -27,7 +40,23 @@ public class Pet {
         this.disponivel = disponivel;
     }
 
-    public void setNome(int nome) {
+    public Pet(String nome, String especie, String raca, int idade, Sexo sexo, Porte porte, String personalidade, String foto, boolean disponivel) {
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.idade = idade;
+        this.sexo = sexo;
+        this.porte = porte;
+        this.personalidade = personalidade;
+        this.foto = foto;
+        this.disponivel = disponivel;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -75,15 +104,15 @@ public class Pet {
         return raca;
     }
 
-    public String getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public Sexo getSexo() {
+    public Enum<Sexo> getSexo() {
         return sexo;
     }
 
-    public Porte getPorte() {
+    public Enum<Porte> getPorte() {
         return porte;
     }
 
@@ -95,7 +124,7 @@ public class Pet {
         return foto;
     }
 
-    public ballena isDisponivel() {
+    public boolean isDisponivel() {
         return disponivel;
     }
 }
