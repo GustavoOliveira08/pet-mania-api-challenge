@@ -65,13 +65,13 @@ Os testes foram realizados utilizando o **Postman**, validados diretamente no ba
 
 Envio do payload JSON contendo os dados do pet (incluindo os valores mapeados pelos Enums `Sexo` e `Porte`). A API retornou status `200 OK` com o objeto persistido e seu `id` gerado automaticamente.
 
-![Cadastro de Pet via POST no Postman](Captura%20de%20tela%202026-11-11%20165445_2.png)
+![Teste POST no Postman](img/Captura%20de%20tela%202026-11-11%20165445.png)
 
 ### 2. Estrutura do Banco de Dados (`petmania_db`)
 
 Validação da criação automática da tabela `pet` e suas respectivas colunas no MySQL pelo Hibernate, refletindo exatamente os atributos definidos na classe `Pet.java`.
 
-![Estrutura da tabela pet no MySQL](Captura%20de%20tela%202026-11-11%20165525_2.png)
+![Estrutura da Tabela no MySQL](img/Captura%20de%20tela%202026-11-11%20165525.png)
 
 ### 3. Validação da Rota de Exclusão (`DELETE /api/pets/{id}`)
 
@@ -81,7 +81,7 @@ Durante os testes no Postman, verificou-se a necessidade de informar o ID direta
 
 | Rota Base (`/api/pets`) | Rota com PathVariable (`/api/pets/{id}`) | Confirmação da Remoção (`200 OK`) |
 | :---: | :---: | :---: |
-| ![Rota Base](Captura%20de%20tela%202026-11-11%20165903_2.png) | ![Rota com ID](Captura%20de%20tela%202026-11-11%20165917_2.png) | ![Resposta do Delete](Captura%20de%20tela%202026-11-11%20170054.png) |
+| ![DELETE Rota Base](img/Captura%20de%20tela%202026-11-11%20165903.png) | ![DELETE com ID](img/Captura%20de%20tela%202026-11-11%20165917.png) | ![Confirmação DELETE](img/Captura%20de%20tela%202026-11-11%20170054.png) |
 
 ### 4. Integração com a Interface Web (Front-end)
 
@@ -89,7 +89,7 @@ Validação visual no portal **PetMania**, demonstrando a exibição do registro
 
 | Pet Cadastrado Listado na Tela | Tela Atualizada Após Remoção |
 | :---: | :---: |
-| ![Pet listado no site](Captura%20de%20tela%202026-11-11%20170211.png) | ![Lista vazia após exclusão](Captura%20de%20tela%202026-11-11%20170331.png) |
+| ![Pet Listado no Site](img/Captura%20de%20tela%202026-11-11%20170211.png) | ![Tela Vazia Após Exclusão](img/Captura%20de%20tela%202026-11-11%20170331%20-%20Copia.png) |
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -102,15 +102,21 @@ Validação visual no portal **PetMania**, demonstrando a exibição do registro
 ## 🚀 Como Executar o Projeto
 
 1. Certifique-se de ter o **MySQL** rodando localmente e crie o banco de dados:
+
    ```sql
    CREATE DATABASE petmania_db;
    ```
+
 2. Configure as credenciais do banco no arquivo `src/main/resources/application.properties`.
+
 3. Execute a aplicação via Maven:
+
    ```bash
    ./mvnw spring-boot:run
    ```
+
 4. Utilize o Postman ou a interface web para consumir os endpoints disponíveis em `http://localhost:8080/api/pets`:
+
    * `GET /api/pets` — Lista todos os pets cadastrados.
    * `POST /api/pets` — Cadastra um novo pet.
    * `DELETE /api/pets/{id}` — Remove um pet pelo ID.
